@@ -2,11 +2,15 @@ import { columns, OrderItem } from "./columns"
 import { DataTable } from "./data-table"
 import AppLayout from '@/layouts/app-layout';
 import { Head } from '@inertiajs/react';
-import React from "react";
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "@/store";
+import { setOrders } from "@/store/categorySlice";
 
 export default function Items() {
-    
+    let data = useSelector((state: RootState) => state.orders.items);
+    const dispatch = useDispatch<AppDispatch>();
+
     const getOrderItems = async (orderId: String) => {
         try {
             const itemsResponse = await fetch(`/api/local-orders/${orderId}/items`);
@@ -39,8 +43,6 @@ export default function Items() {
         }
     };
 
-    const [data, setData] = React.useState<OrderItem[]>([]);
-
     useEffect(() => {
         getOrders().then((orders) => {
             if (!orders || orders.length === 0) {
@@ -49,9 +51,12 @@ export default function Items() {
             }
             const allOrderItemsPromises = orders.map(order => getOrderItems(order.id));
             Promise.all(allOrderItemsPromises)
-            .then((itemsArray) => {
+            .then( async (itemsArray) => {
                 // const items = itemsArray.map(item => item !== undefined);
-                setData(itemsArray.flat());
+                const allOrderItems = itemsArray.flat();
+                await dispatch(setOrders(allOrderItems));
+                
+                //setData(itemsArray.flat());
             })
             .catch((error) => {
                 console.error('Error fetching order items:', error);
@@ -64,7 +69,7 @@ export default function Items() {
             <Head title="Order Items" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 overflow-x-auto">
                 <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
-                     <DataTable columns={columns} data={data} />
+                     <DataTable columns={columns} data={data ? data : [] } />
                 </div>
             </div>
         </AppLayout>

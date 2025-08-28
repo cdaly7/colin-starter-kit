@@ -13,7 +13,7 @@ export type OrderItem = {
 
 export const columns: ColumnDef<OrderItem>[] = [
     {
-        accessorKey: "category_id",
+        accessorKey: "category_name",
         header: ({ column }) => {
             return (
                 <Button
@@ -25,6 +25,13 @@ export const columns: ColumnDef<OrderItem>[] = [
                 </Button>
             )
         },
+        size: 20,
+        maxSize: 50,
+        minSize: 10,
+    },
+    {
+        accessorKey: "color_name",
+        header: "Color",
     },
     {
         accessorKey: "name",
@@ -39,6 +46,10 @@ export const columns: ColumnDef<OrderItem>[] = [
                 </Button>
             )
         },
+        enableResizing: true,
+        size: 20,
+        maxSize: 50,
+        minSize: 10,
     },
     {
         accessorKey: "condition",
@@ -53,13 +64,10 @@ export const columns: ColumnDef<OrderItem>[] = [
         header: "Total Picked",
         cell: ({ row }) => {
             const picked = parseInt(row.getValue("picked_quantity"))
+            //return picked;
             return EditableCell({ value: picked.toString() })
         }
     },
-    {
-        accessorKey: "color",
-        header: "Color",
-    }
 ]
 
 

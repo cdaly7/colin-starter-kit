@@ -25,5 +25,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('items');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('items-to-pick', function () {
+        return Inertia::render('items-to-pick/index');
+    })->name('items');
+});
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

@@ -25,7 +25,7 @@ class BricklinkApiService
     $stack->push($middleware);
 
     $this->client = new Client([
-        'base_uri' => 'https://api.bricklink.com/api/store/v1/',
+        'base_uri' => 'https://api.usps.com/tracking/v3',
         'handler'  => $stack,
         'auth'     => 'oauth',
     ]);

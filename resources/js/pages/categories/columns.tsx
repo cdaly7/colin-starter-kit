@@ -1,9 +1,17 @@
 import { Button } from "@/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
-import { Order } from '@/types';
 
-export const columns: ColumnDef<Order>[] = [
+// This type is used to define the shape of our data.
+// You can use a Zod schema here if you want.
+export type Payment = {
+    order_id: string
+    cost: number
+    status: string
+    buyer_name: string
+}
+
+export const columns: ColumnDef<Payment>[] = [
     {
         accessorKey: "id",
         header: "Order ID",
@@ -25,10 +33,6 @@ export const columns: ColumnDef<Order>[] = [
     {
         accessorKey: "buyer",
         header: "Buyer",
-    },
-    {
-        accessorKey: "readyToShip",
-        header: "Ready To Ship",
     },
     {
         accessorKey: "grand_total",

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class OrderItem extends Authenticatable
+class Color extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -18,29 +18,16 @@ class OrderItem extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'id',
-        'name',       
-        'inventory_id',
-        'order_id',
-        'item_no',
-        'total_quantity',
-        'picked_quantity',
-        'is_packed',
-        'problem',
-        'color_id',
-        'color_name',
-        'condition',
-        'category_id',
-        'category_name',
-        'type',
+        'id',          // BrickLink color_id
+        'name',        // Color name
     ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>
      */
-    protected $hidden = [
-];
+    protected $hidden = [];
 
     /**
      * Get the attributes that should be cast.
@@ -50,7 +37,6 @@ class OrderItem extends Authenticatable
     protected function casts(): array
     {
         return [
-            'id' => 'string'
         ];
     }
 }

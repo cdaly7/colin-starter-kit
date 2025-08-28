@@ -41,3 +41,63 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Order {
+    id: string;
+    grand_total: number;
+    total_items: number;
+    status: string;
+    items: array;
+    readyToShip: boolean;
+    date_ordered: string;
+}
+
+export interface OrderItem {
+    id: string;
+    name: string,
+    condition: string;
+    color_id: string;
+    color_name: string;
+    category: string;
+    category_name: string;
+    order_id: string;
+    inventory_id: string
+    is_packed: boolean;
+    total_quantity: number
+    picked_quantity: number
+    itemId: number;
+    orderId: number;
+    type: string,
+    item_no: string
+}
+
+export interface BricklinkInventoryItem {
+    inventory_id:string|number
+    item: {
+        no:string
+        name:string
+        type:string
+        category_id:string
+    }
+    color_id:string
+    color_name:string
+    quantity:number
+    new_or_used:string
+    unit_price:string
+    bind_id:string
+    description:string
+    remarks:string
+    bulk:number
+    is_retain:boolean
+    is_stock_room:boolean
+    date_created:string
+    my_cost:string
+    sale_rate:number
+    tier_quantity1:number
+    tier_price1:float
+    tier_quantity2:number
+    tier_price2:float
+    tier_quantity3:number
+    tier_price3:float
+    my_weight:float
+}

@@ -20,7 +20,7 @@ const mainNavItems: NavItem[] = [
     },
         {
         title: 'Items To Pick',
-        href: '/items',
+        href: '/items-to-pick',
         icon: LayoutGrid,
     },
 ];
