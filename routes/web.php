@@ -20,6 +20,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('foo', function () {
+        return Inertia::render('foo/index');
+    })->name('foo');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('inventory', function () {
+        return Inertia::render('inventory/index');
+    })->name('inventory');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('items', function () {
         return Inertia::render('items/index');
     })->name('items');

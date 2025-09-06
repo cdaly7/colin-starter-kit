@@ -4,8 +4,9 @@ interface BrickLinkStoreState {
   inventories: any[];
 }
 
+const defaultInventories: any[] = [];
 const initialState: BrickLinkStoreState = {
-  inventories: [],
+  inventories: defaultInventories,
 };
 
 const bricklinkStoreSlice = createSlice({
@@ -13,7 +14,7 @@ const bricklinkStoreSlice = createSlice({
   initialState,
   reducers: {
     setInventories(state, action: PayloadAction<any[]>) {
-      state.inventories = action.payload;
+      state.inventories = action.payload ? action.payload : defaultInventories;
     }
   },
 });

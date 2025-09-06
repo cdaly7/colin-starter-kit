@@ -42,23 +42,23 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
-export interface Order {
+export interface ApplicationOrder {
     id: string;
     grand_total: number;
     total_items: number;
     status: string;
-    items: array;
+    items: Array<OrderItem>;
     readyToShip: boolean;
     date_ordered: string;
 }
 
-export interface OrderItem {
+export interface ApplicationOrderItem {
     id: string;
     name: string,
     condition: string;
     color_id: string;
     color_name: string;
-    category: string;
+    category_id: string;
     category_name: string;
     order_id: string;
     inventory_id: string
@@ -69,6 +69,11 @@ export interface OrderItem {
     orderId: number;
     type: string,
     item_no: string
+}
+
+export interface Category {
+    id: string;
+    name: string
 }
 
 export interface BricklinkInventoryItem {

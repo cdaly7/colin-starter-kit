@@ -31,9 +31,14 @@ class BricklinkApiService
     ]);
 }
 
-public function getInventories()
+public function getInventories($category_id = null, $item_type = null)
 {
-    $response = $this->client->get("inventories");
+    $response = $this->client->get("inventories", [
+        'query' => [
+            'category_id' => $category_id,
+            'item_type' => $item_type
+        ]
+    ]);
     return json_decode($response->getBody(), true);
 }
 
@@ -42,6 +47,18 @@ public function getInventory($inventoryId)
     $response = $this->client->get("inventories/{$inventoryId}");
     return json_decode($response->getBody(), true);
 }
+
+public function putInventory($inventoryId, $data)
+{
+    $response = $this->client->put("inventories/{$inventoryId}", [
+        'headers' => [
+            'Content-Type' => 'application/json',
+        ],
+        'body' => json_encode($data)
+    ]);
+    return json_decode($response->getBody(), true);
+}
+
 
 public function getItem($type, $no)
 {

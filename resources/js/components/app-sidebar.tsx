@@ -14,11 +14,16 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
+        title: 'Foo',
+        href: '/foo',
+        icon: LayoutGrid,
+    },
+    {
         title: 'Orders',
         href: '/orders',
         icon: LayoutGrid,
     },
-        {
+    {
         title: 'Items To Pick',
         href: '/items-to-pick',
         icon: LayoutGrid,

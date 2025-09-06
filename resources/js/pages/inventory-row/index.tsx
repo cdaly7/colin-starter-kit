@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { Head } from '@inertiajs/react';
-import ItemCard from './inventory-item-card';
+import ItemCard from './inventory-row';
 import { useSelector, useDispatch } from "react-redux";
 import type { AppDispatch } from "@/store";
 import { useEffect } from 'react';
@@ -33,7 +33,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { OrderItem, Order } from '@/types';
 
 
-export default function ItemsToPick() {
+export default function InventoryItem() {
     //const data = useSelector((state: RootState) => state.orders.items);
     //const categories = useSelector((state: RootState) => state.categories.data);
     const dispatch = useDispatch<AppDispatch>();

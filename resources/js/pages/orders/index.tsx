@@ -12,7 +12,7 @@ import {
 } from './selectors'
 import { Order } from '@/types';
 
-export default function Dashboard() {
+export default function Orders() {
     const dispatch = useDispatch<AppDispatch>();
     const orders:[Order] = useSelector(orderListWithMeta);
 

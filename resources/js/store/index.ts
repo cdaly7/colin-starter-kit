@@ -4,11 +4,13 @@ import categoryReducer from './categorySlice';
 import orderReducer from './orderSlice';
 import orderItemsReducer from './orderItemsSlice';
 import itemsToPickReducer from '../pages/items-to-pick/itemsToPickSlice';
+import inventoryReducer from '../pages/foo/inventorySlice';
 
 export const store = configureStore({
   reducer: {
     bricklinkStore: bricklinkStoreReducer,
     categories: categoryReducer,
+    inventory: inventoryReducer,
     itemsToPick: itemsToPickReducer,
     orders: orderReducer,
     orderItems: orderItemsReducer
